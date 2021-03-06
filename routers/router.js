@@ -68,4 +68,38 @@ module.exports = app => {
 
     // Retrieve Movie_Showings with movie_showing_id
     app.get("/movie_showing/movie/:movie_showing_movie_id", movie_showing.findByMovieId);
+
+    const user = require("../controllers/UserController");  
+    // Create a new Movie
+    app.post("/user", user.create);
+  
+    // Retrieve all Movie
+    app.get("/user", user.findAll);
+  
+    // Retrieve a single Movie with user_id
+    app.get("/user/:user_id", user.findOne);
+  
+    // Update a Movie with user_id
+    app.put("/user/:user_id", user.update);
+  
+    // Delete a Movie with user_id
+    app.delete("/user/:user_id", user.delete);
+
+    const ticket = require("../controllers/TicketController");  
+    // Create a new Movie
+    app.post("/ticket", ticket.create);
+  
+    // Retrieve all Movie
+    app.get("/ticket", ticket.findAll);
+  
+    // Retrieve a single Movie with ticket_id
+    app.get("/ticket/:ticket_id", ticket.findOne);
+  
+    // Update a Movie with ticket_id
+    app.put("/ticket/:ticket_id", ticket.update);
+  
+    // Delete a Movie with ticket_id
+    app.delete("/ticket/:ticket_id", ticket.delete);
+
+    app.get("/ticket/user/:ticket_user_id", ticket.findByUserId);
   };
